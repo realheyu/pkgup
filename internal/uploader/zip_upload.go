@@ -98,5 +98,7 @@ func UploadToAliyun(zipFilePath, filePath, version, fileName, versionDesc, usern
 		return fmt.Errorf("上传失败：状态码 %d，响应: %s", resp.StatusCode, string(body))
 	}
 
+	body, _ := io.ReadAll(resp.Body)
+	fmt.Printf("上传成功：状态码 %d，响应: %s", resp.StatusCode, string(body))
 	return nil
 }
